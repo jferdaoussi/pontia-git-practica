@@ -1,0 +1,19 @@
+name: Demo Workflow
+
+on:
+  workflow_dispatch:
+     inputs:
+       mensaje_usuario:
+         description: 'Escribe el mensaje a imprimir'
+         required: true
+         type: string
+         default: 'Hola Mundo'
+
+jobs:
+  imprimir_mensaje:
+     runs-on: ubuntu-latest
+     steps:
+      - name: Mostrar mensaje en consola
+        run: |
+          echo "El mensaje ingresado es:"
+          echo "${{ github.event.inputs.mensaje_usuario }}"
